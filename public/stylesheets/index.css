@@ -1,0 +1,268 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #a02121f0; /* Fondo verde */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px; /* Ancho máximo del contenedor */
+    text-align: center; /* Centra el título */
+}
+
+h1 {
+    color: #ffffff; /* Color del texto del encabezado */
+    margin-bottom: 20px; /* Espacio entre el título y el formulario */
+    font-size: 2em; /* Tamaño de fuente más grande para el título */
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Espacio entre los fieldset */
+    justify-content: center; /* Centra los fieldset */
+}
+
+fieldset {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    flex: 1 1 300px; /* Permite que los fieldset crezcan y se encojan, con un ancho base de 300px */
+    background-color: rgb(255, 255, 255); /* Fondo blanco para los fieldset */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+legend {
+    font-weight: bold;
+    color: #333;
+    font-size: 1.2em; /* Tamaño de fuente más grande para la leyenda */
+    background-color: rgb(241, 83, 83); /* Fondo verde claro para el legend */
+    padding: 5px 10px; /* Padding para el legend */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: bold; /* Hacer las etiquetas más destacadas */
+    font-size: 0.9em; /* Tamaño de fuente más pequeño para las etiquetas */
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 0.9em; /* Tamaño de fuente más pequeño */
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center; /* Alinea los checkboxes y sus etiquetas */
+    margin-bottom: 10px; /* Espacio entre cada grupo de checkbox */
+}
+
+.checkbox-group label {
+    margin: 0; /* Elimina el margen superior para alinear correctamente */
+}
+
+.hidden {
+    display: none;
+    margin-left: 20px; /* Espacio para los detalles adicionales */
+    margin-top: 5px;
+}
+
+/* Estilos para los campos de texto que aparecen al seleccionar un checkbox */
+.checkbox-group .hidden input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 0.9em;
+}
+
+button[type="submit"] {
+    background-color: rgb(177, 7, 7); /* Botón verde */
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1em; /* Tamaño de fuente más legible */
+    transition: background-color 0.3s ease; /* Transición suave */
+    margin-top: 20px; /* Espacio antes del botón */
+}
+
+button[type="submit"]:hover {
+    background-color: rgb(100, 0, 0); /* Verde más oscuro en hover */
+}
+
+.error {
+    color: red;
+    margin-top: 10px;
+    font-size: 0.8em; /* Tamaño de fuente más pequeño para mensajes de error */
+}
+/* Estilos para la imagen clickeable */
+.imagen-redireccion {
+    position: fixed; /* Fija la imagen en la pantalla */
+    top: 20px; /* Distancia desde la parte superior */
+    right: 20px; /* Distancia desde la derecha */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+  
+}
+
+.imagen-redireccion img {
+    width: 100px; /* Tamaño de la imagen */
+    height: auto; /* Mantiene la proporción */
+    border-radius: 50%; /* Opcional: Hace la imagen circular */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra suave */
+    transition: transform 0.3s ease; /* Efecto de hover */
+    background-color: white;
+}
+
+.imagen-redireccion img:hover {
+    transform: scale(1.1); /* Escala la imagen al hacer hover */
+}
+.notificacion {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    z-index: 1000;
+}
+
+.notificacion.mostrar {
+    display: block;
+}
+.custom-file-upload {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #a02121f0; /* Color de fondo */
+    color: white; /* Color del texto */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar el cursor al pasar el mouse */
+    font-size: 16px;
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+.custom-file-upload:hover {
+    background-color: #a02121f0; /* Cambiar color al pasar el mouse */
+}
+
+/* Ocultar el input de archivo por defecto */
+input[type="file"] {
+    display: none;
+}
+
+/* Estilos para la vista previa de la imagen */
+#vistaPrevia {
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    margin-top: 20px;
+}
+
+/* Estilos para la imagen de vista previa */
+#imagenPrevia {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 50%; /* Hacer la imagen redonda */
+    border: 2px solid #ddd;
+    padding: 5px;
+    display: none; /* Ocultar inicialmente */
+}
+
+.notificacion.exito {
+    background-color: #4CAF50;
+}
+
+.notificacion.error {
+    background-color: #f44336;
+}
+@keyframes desvanecer {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+@keyframes aparecerDesdeAbajo {
+    0% { transform: translateY(100%); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+.notificacion.mostrar {
+    animation: aparecerDesdeAbajo 0.5s ease-in-out forwards;
+}
+/* Media Queries para pantallas más pequeñas */
+@media (max-width: 768px) {
+    form {
+        flex-direction: column; /* Apila los fieldset verticalmente */
+    }
+
+    fieldset {
+        min-width: 100%; /* Ocupa todo el ancho en pantallas pequeñas */
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    select,
+    textarea {
+        padding: 8px;
+    }
+    .imagen-redireccion {
+        top: 10px;
+        right: 10px;
+    }
+
+    .imagen-redireccion img {
+        width: 40px; /* Tamaño más pequeño en móviles */
+    }
+
+}
+
+/* Media Queries para pantallas muy pequeñas */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.2em;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    select,
+    textarea {
+        padding: 6px;
+    }
+
+    legend {
+        font-size: 1em; /* Tamaño de fuente más pequeño para el legend en pantallas pequeñas */
+    }
+}

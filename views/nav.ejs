@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Navegación</title>
+    <link rel="stylesheet" href="/stylesheets/nav.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Imagen en el centro -->
+        <img src="/images/iutarLogo.png" alt="Logo" class="logo">
+
+        <!-- Campo de búsqueda y opciones de clasificación -->
+        <div class="search-sort">
+            <input type="text" id="searchInput" placeholder="Buscar">
+            <select id="sortSelect">
+                <option value="name_asc">Ordenar por Nombre (A-Z)</option>
+                <option value="name_desc">Ordenar por Nombre (Z-A)</option>
+                <option value="cedula_asc">Ordenar por Cédula (Ascendente)</option>
+                <option value="cedula_desc">Ordenar por Cédula (Descendente)</option>
+            </select>
+        </div>
+
+        <!-- Tabla de registros -->
+        <table id="registrosTable">
+            <thead>
+                <tr>
+                    <th>Foto</th> <!-- Encabezado para las fotos -->
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Cédula</th>
+                    <th>Carrera</th>
+                    <th>Teléfono</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (registros && registros.length > 0) { %>
+                    <% registros.forEach((registro) => { %>
+                        <tr data-id="<%= registro.id %>">
+                            <td>
+                                <% if (registro.foto) { %>
+                                    <img src="<%= registro.foto %>" alt="Foto" style="width: 50px; height: 50px; border-radius: 50%;">
+                                <% } else { %>
+                                    <img src="/img/default.jpg" alt="Foto" style="width: 50px; height: 50px; border-radius: 50%;">
+                                <% } %>
+                            </td>
+                            <td><%= registro.nombre %></td>
+                            <td><%= registro.apellido %></td>
+                            <td><%= registro.cedula %></td>
+                            <td><%= registro.carrera %></td>
+                            <td><%= registro.telefono %></td>
+                            <td class="actions">
+                                <button onclick="editarRegistro('<%= registro.id %>')">Editar</button>
+                                <button onclick="eliminarRegistro('<%= registro.id %>')">Eliminar</button>
+                                <button onclick="verMas('<%= registro.id %>')">Ver más</button>
+                            </td>
+                        </tr>
+                    <% }); %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="7">No hay registros disponibles</td> <!-- Ajusta el colspan a 7 -->
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal para editar registros -->
+    <div id="editModal" class="modal">
+        <h2>Editar Registro</h2>
+        <form id="editForm" enctype="multipart/form-data">
+            <!-- Información Personal -->
+            <label for="editNombre">Nombre:</label>
+            <input type="text" id="editNombre" name="nombre" placeholder="Nombre" required>
+        
+            <label for="editApellido">Apellido:</label>
+            <input type="text" id="editApellido" name="apellido" placeholder="Apellido" required>
+        
+            <label for="editCedula">Cédula:</label>
+            <input type="text" id="editCedula" name="cedula" placeholder="Cédula" required>
+        
+            <label for="editDireccion">Dirección:</label>
+            <input type="text" id="editDireccion" name="direccion" placeholder="Dirección" required>
+        
+            <label for="editTelefono">Teléfono:</label>
+            <input type="text" id="editTelefono" name="telefono" placeholder="Teléfono" required>
+        
+            <label for="editCorreo">Correo electrónico:</label>
+            <input type="email" id="editCorreo" name="correo" placeholder="Correo electrónico" required>
+        
+            <label for="editCarrera">Carrera:</label>
+            <input type="text" id="editCarrera" name="carrera" placeholder="Carrera" required>
+        
+            <!-- Información Médica -->
+            <label for="editTipoAlergia">Tipo de alergias:</label>
+            <input type="text" id="editTipoAlergia" name="tipoAlergia" placeholder="Especifique las alergias">
+        
+            <label for="editTipoSindrome">Tipo de síndrome:</label>
+            <input type="text" id="editTipoSindrome" name="tipoSindrome" placeholder="Especifique los síndromes">
+        
+            <label for="editTipoFatiga">Tipo de fatiga:</label>
+            <input type="text" id="editTipoFatiga" name="tipoFatiga" placeholder="Especifique la fatiga visual">
+        
+            <label for="editTipoDolores">Tipo de dolores:</label>
+            <input type="text" id="editTipoDolores" name="tipoDolores" placeholder="Especifique los dolores comunes">
+        
+            <label for="editContactoEmergencia">Contacto de emergencia:</label>
+            <input type="text" id="editContactoEmergencia" name="contactoEmergencia" placeholder="Contacto de emergencia" required>
+        
+            <label for="editTipoSangre">Tipo de sangre:</label>
+            <select id="editTipoSangre" name="tipoSangre" required>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+            </select>
+        
+            <!-- Foto -->
+            <label for="editFoto" class="custom-file-upload">
+                Seleccionar nueva foto
+            </label>
+            <input type="file" id="editFoto" name="foto" accept="image/*">
+        
+            <!-- Foto preview centrada -->
+            <div class="foto-preview-container">
+                <img id="fotoPreview" src="" alt="Foto del estudiante">
+            </div>
+        
+            <!-- Botones -->
+            <div class="button-container">
+                <button type="button" onclick="guardarCambios()">Guardar</button>
+                <button type="button" onclick="cerrarModal()">Cancelar</button>
+            </div>
+        </form>
+        
+    </div>
+    <div id="viewMoreModal" class="modal">
+        <h2>Detalles del Registro</h2>
+        <div id="viewMoreContent">
+            <!-- Aquí se mostrarán los detalles del registro -->
+        </div>
+        <div class="button-container">
+            <button type="button" onclick="cerrarViewMoreModal()">Cerrar</button>
+        </div>
+    </div>
+    <div id="notificacion" class="notificacion hidden">
+        <span id="mensajeNotificacion"></span>
+    </div>
+    <!-- Modal de confirmación para eliminar -->
+<div id="confirmModal" class="modal">
+    <div class="modal-content">
+        <h2>¿Estás seguro?</h2>
+        <p>¿Deseas eliminar este registro? Esta acción no se puede deshacer.</p>
+        <div class="button-container">
+            <button id="confirmDelete">Sí, eliminar</button>
+            <button id="cancelDelete">Cancelar</button>
+        </div>
+    </div>
+</div>
+    <script src="/javascripts/nav.js"></script>
+</body>
+</html>

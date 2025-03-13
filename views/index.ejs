@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Registro</title>
+    <link rel="stylesheet" href="/stylesheets/index.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="manifest" href="/images/site.webmanifest">
+</head>
+<body>
+     <!-- Imagen clickeable en la esquina superior derecha -->
+     <a href="/login" class="imagen-redireccion">
+        <img src="/images/iutarLogo.png" alt="Imagen de redirección">
+    </a>
+    <div class="container">
+        <h1>Formulario de Registro</h1> <!-- Título arriba del formulario -->
+        <form id="registroForm" action="/registro" method="post" enctype="multipart/form-data">
+            
+                
+              
+            
+            <!-- Primera parte: Información personal -->
+            <fieldset>
+                <legend>Información Personal</legend>
+                <label for="foto" class="custom-file-upload">
+                    <i class="fas fa-upload"></i> Seleccionar foto
+                </label>
+                <input type="file" id="foto" name="foto" accept="image/*" ><br><br>
+                <div id="vistaPrevia">
+                    <img id="imagenPrevia" src="#" alt="Vista previa de la imagen" style="display: none; max-width: 200px; max-height: 200px; border-radius: 50%; margin: 10px 0;">
+                </div>
+                <label for="cedula">Cédula:</label>
+                <input type="text" id="cedula" name="cedula" placeholder="Ejemplo: 30000000" required><br><br>
+
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Nombre" required><br><br>
+
+                <label for="apellido">Apellido:</label>
+                <input type="text" id="apellido" name="apellido" placeholder="Apellido" required><br><br>
+
+                <label for="direccion">Dirección:</label>
+                <input type="text" id="direccion" name="direccion" placeholder="Ejemplo: Aragua Zamora Villa de Cura Av.Bolivar" required><br><br>
+
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" placeholder="Ejemplo: 04120404040" required><br><br>
+
+                <label for="correo">Correo electrónico:</label>
+                <input type="email" id="correo" name="correo" placeholder="ejemplo@gmail.com" required><br><br>
+
+                <label for="carrera">Carrera:</label>
+                <input type="text" id="carrera" name="carrera" placeholder="Ejemplo:Informatica" required><br><br>
+            </fieldset>
+
+            <!-- Segunda parte: Información médica -->
+            <fieldset>
+                <legend>Información Médica</legend>
+            
+                <label>Condición médica:</label><br>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="alergias" name="condicion_medica" value="alergias"> Alergias<br>
+                    <div id="alergiasDetalle" class="hidden">
+                        <label for="tipoAlergia">Especifique el tipo de alergia:</label>
+                        <input type="text" id="tipoAlergia" name="tipoAlergia"><br><br>
+                    </div>
+                </div>
+            
+                <div class="checkbox-group">
+                    <input type="checkbox" id="sindromes" name="condicion_medica" value="sindromes"> Síndromes<br>
+                    <div id="sindromesDetalle" class="hidden">
+                        <label for="tipoSindrome">Especifique cuales:</label>
+                        <input type="text" id="tipoSindrome" name="tipoSindrome"><br><br>
+                    </div>
+                </div>
+            
+                <div class="checkbox-group">
+                    <input type="checkbox" id="fatigaVisual" name="condicion_medica" value="fatigaVisual"> Fatiga visual<br>
+                    <div id="fatigaDetalle" class="hidden">
+                        <label for="tipoFatiga">Especifique cuales:</label>
+                        <input type="text" id="tipoFatiga" name="tipoFatiga"><br><br>
+                    </div>
+                </div>
+            
+                <div class="checkbox-group">
+                    <input type="checkbox" id="doloresComunes" name="condicion_medica" value="doloresComunes"> Dolores Comunes<br>
+                    <div id="doloresDetalle" class="hidden">
+                        <label for="tipoDolores">Especifique cuales:</label>
+                        <input type="text" id="tipoDolores" name="tipoDolores"><br><br>
+                    </div>
+                </div>
+            
+                <label for="contactoEmergencia">Contacto de emergencia:</label>
+                <input type="number" id="contactoEmergencia" name="contactoEmergencia" placeholder="04120000000" required><br><br>
+            
+                <label for="tipoSangre">Tipo de sangre:</label>
+                <select id="tipoSangre" name="tipoSangre" required>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                </select><br><br>
+            </fieldset>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+    <div id="notificacion" class="notificacion hidden">
+        <span id="mensajeNotificacion"></span>
+    </div>
+    <script src="/javascripts/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #9a2b2be7; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  padding: 20px; /* Espaciado para pantallas pequeñas */
+  box-sizing: border-box; /* Para incluir padding en el tamaño total */
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px; /* Espacio entre el logo y el formulario */
+}
+
+.login-container {
+  background-color: rgb(255, 255, 255); /* Fondo blanco para el formulario */
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 100%;
+  max-width: 400px; /* Ancho máximo del formulario */
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: white; /* Color del texto del encabezado */
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; /* Para incluir padding en el tamaño total */
+}
+
+input[type="submit"],
+button[type="button"] {
+  background-color: rgb(155, 50, 50); /* Botón rojo */
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%; /* Botón ocupa todo el ancho */
+  box-sizing: border-box; /* Para incluir padding en el tamaño total */
+}
+
+input[type="submit"]:hover,
+button[type="button"]:hover {
+  background-color: darkred; /* Rojo intenso en hover */
+}
+
+.logo {
+  max-width: 200px; /* Ajusta el tamaño máximo de la imagen según sea necesario */
+  height: auto; /* Mantiene la proporción de la imagen */
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+}
+
+/* Media Queries para pantallas más pequeñas */
+@media (max-width: 600px) {
+  .login-container {
+    padding: 15px; /* Menos padding en pantallas pequeñas */
+  }
+  h2 {
+    font-size: 1.5em; /* Tamaño de fuente más pequeño para el encabezado */
+  }
+  input[type="text"],
+  input[type="password"],
+  input[type="submit"] {
+    padding: 8px; /* Menos padding en campos de entrada */
+  }
+}
+
+/* Media Queries para pantallas muy pequeñas */
+@media (max-width: 400px) {
+  h2 {
+    font-size: 1.2em; /* Tamaño de fuente aún más pequeño para el encabezado */
+  }
+  input[type="text"],
+  input[type="password"],
+  input[type="submit"] {
+    padding: 6px; /* Menos padding en campos de entrada */
+  }
+}

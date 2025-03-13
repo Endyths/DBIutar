@@ -1,0 +1,474 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #9a2b2be7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para el logo */
+.logo {
+    display: block;
+    margin: 0 auto 20px;
+    max-width: 200px;
+    height: auto;
+}
+
+/* Estilos para el campo de búsqueda y clasificación */
+.search-sort {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#searchInput {
+    width: 70%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#sortSelect {
+    width: 25%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Estilos para la tabla */
+#registrosTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+#registrosTable th, #registrosTable td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#registrosTable th {
+    background-color: #f8f8f8;
+    font-weight: bold;
+}
+
+#registrosTable tr:hover {
+    background-color: #f1f1f1;
+}
+
+#registrosTable img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.actions button {
+    margin-right: 5px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.actions button:hover {
+    background-color: #ddd;
+}
+
+/* Estilos para los modales */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: #fff; /* Fondo blanco para el título */
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.modal form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 500px; /* Modal más ancho */
+    max-width: 90%;
+    margin: auto;
+    max-height: 80vh; /* Limita la altura del modal */
+    overflow-y: auto; /* Hace que el contenido sea scrolleable */
+}
+
+.modal input, .modal select, .modal textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.modal .checkbox-group {
+    margin-bottom: 10px;
+}
+
+.modal .hidden {
+    display: none;
+}
+
+.modal button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px;
+    background-color: #a02121f0; /* Color rojo para los botones */
+    color: #fff; /* Texto blanco */
+}
+
+.modal button:hover {
+    background-color: #7a1919;
+}
+
+/* Estilos para la notificación */
+.notificacion {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    color: white;
+    display: none;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.notificacion.mostrar {
+    display: block;
+    opacity: 1;
+}
+
+.notificacion.exito {
+    background-color: #4CAF50; /* Verde para éxito */
+}
+
+.notificacion.error {
+    background-color: #f44336; /* Rojo para error */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+/* Estilos para el modal de confirmación */
+#confirmModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+#confirmModal .modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 90%;
+    text-align: center;
+}
+
+#confirmModal h2 {
+    margin-bottom: 10px;
+    color: #a02121f0; /* Color rojo */
+}
+
+#confirmModal p {
+    margin-bottom: 20px;
+}
+
+#confirmModal .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+#confirmModal button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#confirmDelete {
+    background-color: #a02121f0; /* Color rojo */
+    color: #fff;
+}
+
+#confirmDelete:hover {
+    background-color: #7a1919; /* Color rojo más oscuro */
+}
+
+#cancelDelete {
+    background-color: #ccc; /* Color gris */
+    color: #000;
+}
+
+#cancelDelete:hover {
+    background-color: #bbb; /* Color gris más oscuro */
+}
+
+/* Estilos para el modal de edición */
+#editModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: auto; /* Hace que el modal sea scrolleable */
+}
+
+#editModal h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: #fff; /* Fondo blanco para el título */
+    padding: 10px;
+    border-radius: 4px;
+}
+
+#editModal form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 500px;
+    max-width: 90%;
+    margin: 20px auto; /* Centra el formulario y añade margen */
+    max-height: 80vh; /* Limita la altura del modal */
+    overflow-y: auto; /* Hace que el contenido sea scrolleable */
+}
+
+#editModal label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#editModal input,
+#editModal select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Contenedor de la foto preview */
+.foto-preview-container {
+    display: flex;
+    justify-content: center; /* Centra la foto horizontalmente */
+    margin-bottom: 15px;
+}
+
+#fotoPreview {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover; /* Asegura que la foto se ajuste correctamente */
+}
+
+/* Botón personalizado para seleccionar archivo */
+.custom-file-upload {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    text-align: center;
+    width: 100%;
+}
+
+.custom-file-upload:hover {
+    background-color: #0056b3;
+}
+
+/* Contenedor flexible para los botones */
+.button-container {
+    display: flex;
+    justify-content: center; /* Centra los botones horizontalmente */
+    gap: 10px; /* Espacio entre los botones */
+}
+
+.button-container button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #a02121f0;
+    color: #fff;
+}
+
+.button-container button:hover {
+    background-color: #7a1919;
+}
+
+/* Estilos para el botón personalizado de selección de archivo */
+.custom-file-upload {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #a02121f0;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+.custom-file-upload:hover {
+    background-color: #7a1919;
+}
+
+#editFoto {
+    display: none;
+}
+
+#fotoPreview {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover; /* Asegura que la foto se ajuste correctamente */
+}
+
+/* Estilos para el modal de detalles */
+#viewMoreModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+#viewMoreContent {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 100%;
+    text-align: center;
+    margin: auto;
+}
+#viewMoreContent p {
+    margin: 10px 0;
+    text-align: left;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center; /* Centra los botones horizontalmente */
+    margin-top: 20px; /* Espacio entre los botones */
+}
+
+#viewMoreModal button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #a02121f0;
+    color: #fff;
+}
+
+#viewMoreModal button:hover {
+    background-color: #7a1919;
+}
+@media (min-width: 481px) and (max-width: 768px) {
+    /* Pantallas medianas (tablets) */
+    .container {
+        width: 95%;
+    }
+
+    .search-sort {
+        flex-direction: row; /* Cambia a fila en tablets */
+    }
+
+    #searchInput {
+        width: 70%;
+    }
+
+    #sortSelect {
+        width: 25%;
+    }
+
+    .modal form, #confirmModal .modal-content, #viewMoreContent {
+        width: 80%;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+    /* Pantallas grandes (tablets grandes y pantallas pequeñas de escritorio) */
+    .container {
+        width: 90%;
+    }
+
+    .modal form, #confirmModal .modal-content, #viewMoreContent {
+        width: 70%;
+    }
+}
+
+@media (min-width: 1201px) {
+    /* Pantallas muy grandes (escritorios grandes) */
+    .container {
+        width: 80%;
+    }
+
+    .modal form, #confirmModal .modal-content, #viewMoreContent {
+        width: 50%;
+    }
+}
