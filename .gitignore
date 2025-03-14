@@ -1,3 +1,4 @@
 node_modules/
 .env
 temporar.js
+DBiutar.db

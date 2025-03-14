@@ -44,7 +44,7 @@ function mostrarNotificacion(mensaje, tipo) {
 }
 // Función para validar la cédula (máximo 8 caracteres y solo números)
 function validarCedula(cedula) {
-    const regex = /^\d{1,8}$/; // Solo números y máximo 8 caracteres
+    const regex = /^\d{7,8}$/; // Solo números y máximo 8 caracteres
     return regex.test(cedula);
 }
 

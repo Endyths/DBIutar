@@ -1,6 +1,6 @@
 // Funciones de validación
 function validarCedula(cedula) {
-    const regex = /^\d{8}$/; // Exactamente 8 dígitos
+    const regex = /^\d{7,8}$/; // Exactamente 8 dígitos
     if (!regex.test(cedula)) {
         mostrarNotificacion('La cédula debe tener exactamente 8 dígitos numéricos.', 'error');
         return false;
@@ -126,6 +126,7 @@ function editarRegistro(id) {
             }
 
             const registro = data.registro;
+            console.log('Registro:', registro);
 
             // Asignar valores a los campos del formulario
             document.getElementById('editNombre').value = registro.nombre || '';
@@ -135,12 +136,12 @@ function editarRegistro(id) {
             document.getElementById('editTelefono').value = registro.telefono || '';
             document.getElementById('editCorreo').value = registro.correo || '';
             document.getElementById('editCarrera').value = registro.carrera || '';
-            document.getElementById('editTipoAlergia').value = registro.tipoAlergia || '';
-            document.getElementById('editTipoSindrome').value = registro.tipoSindrome || '';
-            document.getElementById('editTipoFatiga').value = registro.tipoFatiga || '';
-            document.getElementById('editTipoDolores').value = registro.tipoDolores || '';
-            document.getElementById('editContactoEmergencia').value = registro.contactoEmergencia || '';
-            document.getElementById('editTipoSangre').value = registro.tipoSangre || '';
+            document.getElementById('editTipoAlergia').value = registro.tipoalergia || '';
+            document.getElementById('editTipoSindrome').value = registro.tiposindrome || '';
+            document.getElementById('editTipoFatiga').value = registro.tipofatiga || '';
+            document.getElementById('editTipoDolores').value = registro.tipodolores || '';
+            document.getElementById('editContactoEmergencia').value = registro.contactoemergencia || '';
+            document.getElementById('editTipoSangre').value = registro.tiposrangre || '';
 
             // Mostrar la foto anterior en la vista previa
             const fotoPreview = document.getElementById('fotoPreview');
@@ -199,6 +200,7 @@ function guardarCambios() {
     })
     .then(data => {
         if (data.success) {
+            console.log(data)
             mostrarNotificacion('Registro actualizado con éxito', 'exito');
             cerrarModal();
             location.reload(); // Recargar la página para ver los cambios
@@ -281,12 +283,12 @@ async function verMas(id) {
                 <p><strong>Teléfono:</strong> ${registro.telefono}</p>
                 <p><strong>Correo electrónico:</strong> ${registro.correo}</p>
                 <p><strong>Carrera:</strong> ${registro.carrera}</p>
-                <p><strong>Alergias:</strong> ${registro.tipoAlergia || 'Ninguna'}</p>
-                <p><strong>Síndromes:</strong> ${registro.tipoSindrome || 'Ninguno'}</p>
-                <p><strong>Fatiga visual:</strong> ${registro.tipoFatiga || 'No'}</p>
-                <p><strong>Dolores comunes:</strong> ${registro.tipoDolores || 'No'}</p>
-                <p><strong>Contacto de emergencia:</strong> ${registro.contactoEmergencia}</p>
-                <p><strong>Tipo de sangre:</strong> ${registro.tipoSangre}</p>
+                <p><strong>Alergias:</strong> ${registro.tipoalergia || 'Ninguna'}</p>
+                <p><strong>Síndromes:</strong> ${registro.tiposindrome || 'Ninguno'}</p>
+                <p><strong>Fatiga visual:</strong> ${registro.tipofatiga || 'No'}</p>
+                <p><strong>Dolores comunes:</strong> ${registro.tipodolores || 'No'}</p>
+                <p><strong>Contacto de emergencia:</strong> ${registro.contactoemergencia}</p>
+                <p><strong>Tipo de sangre:</strong> ${registro.tiposangre}</p>
             `;
             viewMoreModal.style.display = 'block';
         } else {
