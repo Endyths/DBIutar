@@ -141,7 +141,7 @@ function editarRegistro(id) {
             document.getElementById('editTipoFatiga').value = registro.tipofatiga || '';
             document.getElementById('editTipoDolores').value = registro.tipodolores || '';
             document.getElementById('editContactoEmergencia').value = registro.contactoemergencia || '';
-            document.getElementById('editTipoSangre').value = registro.tiposrangre || '';
+            document.getElementById('editTipoSangre').value = registro.tiposangre || '';
 
             // Mostrar la foto anterior en la vista previa
             const fotoPreview = document.getElementById('fotoPreview');
